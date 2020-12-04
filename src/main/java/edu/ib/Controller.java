@@ -13,7 +13,6 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.mariuszgromada.math.mxparser.Function;
@@ -180,16 +179,24 @@ public class Controller {
         if (f.checkSyntax()) {
             wrongFunctionText.setVisible(false);
             XYChart.Series points = new XYChart.Series();
-            for (int i = domainLeft; i <= (domainRight-domainLeft) / (sample * 0.1); i++) {
+            double max=Double.MIN_VALUE;
+            double min=Double.MAX_VALUE;
+            for (int i = 0; i <= (domainRight-domainLeft) / (sample * 0.1); i++) {
                 double x = domainLeft + i * sample * 0.1;
                 if (!Double.isNaN(f.calculate(x)) && f.calculate(x) != Double.POSITIVE_INFINITY && f.calculate(x) != Double.NEGATIVE_INFINITY) {
                     points.getData().add(new XYChart.Data(x, f.calculate(x)));
+                    if(max<f.calculate(x)) max=f.calculate(x);
+                    if(min>f.calculate(x)) min=f.calculate(x);
                 }
             }
+            System.out.println((domainRight-domainLeft)/50.0);
+            xAxis.setTickUnit((domainRight-domainLeft)/50.0);
             graph.getData().clear();
             graph.getData().add(points);
+            System.out.println(xAxis.getTickUnit());
         } else {
             wrongFunctionText.setVisible(true);
+            functionTextField.requestFocus();
         }
     }
 
@@ -221,20 +228,25 @@ public class Controller {
         methodChoiceBox.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
             switch ((Integer) newValue) {
                 case 2, 3 -> {
+                    if(x0.disabledProperty().getValue())
+                        x0.setText(String.valueOf(Math.floor((Double.parseDouble(domainRightText.getText())+Double.parseDouble(domainLeftText.getText()))/2.0)));
                     x0.setDisable(false);
                     xLeft.clear();
                     xLeft.setDisable(true);
                     xRight.clear();
                     xRight.setDisable(true);
-                    x0.setText(String.valueOf(Math.floor(Double.parseDouble(domainRightText.getText())-Double.parseDouble(domainLeftText.getText()))/2));
+
                 }
                 default -> {
                     x0.clear();
                     x0.setDisable(true);
+                    if(xLeft.disabledProperty().getValue())
+                        xLeft.setText(String.valueOf(domainLeft));
+                    if(xRight.disabledProperty().getValue())
+                    xRight.setText(String.valueOf(domainRight));
                     xLeft.setDisable(false);
                     xRight.setDisable(false);
-                    xLeft.setText(String.valueOf(domainLeft));
-                    xRight.setText(String.valueOf(domainRight));
+
 
                 }
             }

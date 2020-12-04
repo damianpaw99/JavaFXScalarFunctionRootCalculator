@@ -23,23 +23,23 @@ public class CalculateScalarFunction {
                 } else if (function.f(x) * function.f(xRight) < 0) {
                     xLeft = x;
                 } else {
-                    System.out.println("x=" + x + " EpsA=0");
+                    //System.out.println("x=" + x + " EpsA=0");
                     break;
                 }
                 oldxr = x;
                 x = (xRight + xLeft) / 2;
                 blad = Math.abs((x - oldxr) / x);
-                System.out.println(counter++ + " xLeft=" + xLeft + " xRight=" + xRight + " x=" + x + " EpsA=" + blad);
+                //System.out.println(counter++ + " xLeft=" + xLeft + " xRight=" + xRight + " x=" + x + " EpsA=" + blad);
             } while (eps <= blad);
             return Double.toString(x);
         } else if (function.f(xLeft) == 0) {
-            System.out.println("x=" + xLeft + "EpsA=0");
+            //System.out.println("x=" + xLeft + "EpsA=0");
             return String.valueOf(xLeft);
         } else if (function.f(xRight) == 0) {
-            System.out.println("x=" + xRight + "EpsA=0");
+            //System.out.println("x=" + xRight + "EpsA=0");
             return String.valueOf(xRight);
         } else {
-            System.out.println("Value f(xLeft)*f(xRight)>0");
+            //System.out.println("Value f(xLeft)*f(xRight)>0");
             return "Failed, try using other method or change input parameters.";
         }
     }
@@ -67,23 +67,23 @@ public class CalculateScalarFunction {
                 } else if (function.f(x) * function.f(xRight) < 0) {
                     xLeft = x;
                 } else {
-                    System.out.println("x=" + x + " EpsA=0" + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
+                    //System.out.println("x=" + x + " EpsA=0" + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
                     break;
                 }
                 oldxr = x;
                 x = (xRight + xLeft) / 2;
                 blad = Math.abs((x - oldxr) / x);
-                System.out.println(counter++ + " xLeft=" + xLeft + " xRight=" + xRight + " x=" + x + " EpsA=" + blad + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
+                //System.out.println(counter++ + " xLeft=" + xLeft + " xRight=" + xRight + " x=" + x + " EpsA=" + blad + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
             } while (eps <= blad);
             return String.valueOf(x);
         } else if (function.f(xLeft) == 0) {
-            System.out.println("x=" + xLeft + "EpsA=0 EpsT=" + Math.abs((xLeft - xToCompare) / xToCompare));
+            //System.out.println("x=" + xLeft + "EpsA=0 EpsT=" + Math.abs((xLeft - xToCompare) / xToCompare));
             return String.valueOf(xLeft);
         } else if (function.f(xRight) == 0) {
-            System.out.println("x=" + xRight + "EpsA=0 EpsT=" + Math.abs((xLeft - xToCompare) / xToCompare));
+            //System.out.println("x=" + xRight + "EpsA=0 EpsT=" + Math.abs((xLeft - xToCompare) / xToCompare));
             return String.valueOf(xRight);
         } else {
-            System.out.println("Value f(xLeft)*f(xRight)>0");
+            //System.out.println("Value f(xLeft)*f(xRight)>0");
             return "Failed, try using other method or change input parameters.";
         }
     }
@@ -113,18 +113,18 @@ public class CalculateScalarFunction {
 
                 x = xLeft - (function.f(xLeft) * (xRight - xLeft) / (function.f(xRight) - function.f(xLeft)));
                 blad = Math.abs((x - oldxr) / x);
-                System.out.println(counter++ + " xLeft=" + xLeft + " xRight=" + xRight + " x=" + x + " EpsA=" + blad);
+                //System.out.println(counter++ + " xLeft=" + xLeft + " xRight=" + xRight + " x=" + x + " EpsA=" + blad);
                 oldxr = x;
             } while (eps <= blad);
             return String.valueOf(x);
         } else if (function.f(xLeft) == 0) {
-            System.out.println("x=" + xLeft + "EpsA=0");
+            //System.out.println("x=" + xLeft + "EpsA=0");
             return String.valueOf(xLeft);
         } else if (function.f(xRight) == 0) {
-            System.out.println("x=" + xRight + "EpsA=0");
+            //System.out.println("x=" + xRight + "EpsA=0");
             return String.valueOf(xRight);
         } else {
-            System.out.println("Value f(xLeft)*f(xRight)>0");
+            //System.out.println("Value f(xLeft)*f(xRight)>0");
             return "Failed, try using other method or change input parameters.";
         }
     }
@@ -155,18 +155,18 @@ public class CalculateScalarFunction {
 
                 x = xLeft - (function.f(xLeft) * (xRight - xLeft) / (function.f(xRight) - function.f(xLeft)));
                 blad = Math.abs((x - oldxr) / x);
-                System.out.println(counter++ + " xLeft=" + xLeft + " xRight=" + xRight + " x=" + x + " EpsA=" + blad + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
+                //System.out.println(counter++ + " xLeft=" + xLeft + " xRight=" + xRight + " x=" + x + " EpsA=" + blad + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
                 oldxr = x;
             } while (eps <= blad);
             return String.valueOf(x);
         } else if (function.f(xLeft) == 0) {
-            System.out.println("x=" + xLeft + "EpsA=0" + " EpsT=" + Math.abs((xLeft - xToCompare) / xToCompare));
+            //System.out.println("x=" + xLeft + "EpsA=0" + " EpsT=" + Math.abs((xLeft - xToCompare) / xToCompare));
             return String.valueOf(xLeft);
         } else if (function.f(xRight) == 0) {
-            System.out.println("x=" + xRight + "EpsA=0" + " EpsT=" + Math.abs((xRight - xToCompare) / xToCompare));
+            //System.out.println("x=" + xRight + "EpsA=0" + " EpsT=" + Math.abs((xRight - xToCompare) / xToCompare));
             return String.valueOf(xRight);
         } else {
-            System.out.println("Value f(xLeft)*f(xRight)>0");
+            //System.out.println("Value f(xLeft)*f(xRight)>0");
             return "Failed, try using other method or change input parameters.";
         }
     }
@@ -189,7 +189,7 @@ public class CalculateScalarFunction {
             oldx = x;
             x = x + function.f(x);
             blad = Math.abs((x - oldx) / x);
-            System.out.println(counter++ + " x=" + x + " EpsA=" + blad);
+            //System.out.println(counter++ + " x=" + x + " EpsA=" + blad);
         } while (blad >= eps);
         if (x == Double.POSITIVE_INFINITY || x == Double.NEGATIVE_INFINITY) {
             return "Failed, try using other method or change input parameters.";
@@ -216,7 +216,7 @@ public class CalculateScalarFunction {
             oldx = x;
             x = x + function.f(x);
             blad = Math.abs((x - oldx) / x);
-            System.out.println(counter++ + " x=" + x + " EpsA=" + blad + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
+            //System.out.println(counter++ + " x=" + x + " EpsA=" + blad + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
         } while (blad >= eps);
         if (x == Double.POSITIVE_INFINITY || x == Double.NEGATIVE_INFINITY) {
             return "Failed, try using other method or change input parameters.";
@@ -241,7 +241,7 @@ public class CalculateScalarFunction {
             oldx = x;
             x = x - (function.f(x) / (1 + function.f(x) * firstTangent(function, x0)));
             blad = Math.abs((x - oldx) / x);
-            System.out.println(counter++ + " x=" + x + " EpsA=" + blad);
+            //System.out.println(counter++ + " x=" + x + " EpsA=" + blad);
         } while (blad >= eps);
         if(function.f(x)>0.1 || function.f(x)<-0.1) return "Failed, try using other method or change input parameters.";
         else return String.valueOf(x);
@@ -265,7 +265,7 @@ public class CalculateScalarFunction {
             oldx = x;
             x = x - (function.f(x) / (1 + function.f(x) * firstTangent(function, x0)));
             blad = Math.abs((x - oldx) / x);
-            System.out.println(counter++ + " x=" + x + " EpsA=" + blad + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
+            //System.out.println(counter++ + " x=" + x + " EpsA=" + blad + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
         } while (blad >= eps);
         if(function.f(x)>0.1 || function.f(x)<-0.1) return "Failed, try using other method or change input parameters.";
         else return String.valueOf(x);
@@ -291,7 +291,7 @@ public class CalculateScalarFunction {
             xb = x;
             x = xb - function.f(xb) * (xa - xb) / (function.f(xa) - function.f(xb));
             blad = Math.abs((x - xb) / x);
-            System.out.println(counter++ + "xa=" + xa + " xb=" + xb + " x=" + x + " EpsA=" + blad);
+            //System.out.println(counter++ + "xa=" + xa + " xb=" + xb + " x=" + x + " EpsA=" + blad);
         } while (blad >= eps);
         if(function.f(x)>0.1 || function.f(x)<-0.1) return "Failed, try using other method or change input parameters.";
         else return String.valueOf(x);
@@ -318,7 +318,7 @@ public class CalculateScalarFunction {
             xb = x;
             x = xb - function.f(xb) * (xa - xb) / (function.f(xa) - function.f(xb));
             blad = Math.abs((x - xb) / x);
-            System.out.println(counter++ + " xa=" + xa + " xb=" + xb + " x=" + x + " EpsA=" + blad + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
+            //System.out.println(counter++ + " xa=" + xa + " xb=" + xb + " x=" + x + " EpsA=" + blad + " EpsT=" + Math.abs((x - xToCompare) / xToCompare));
         } while (blad >= eps);
         if(function.f(x)>0.1 || function.f(x)<-0.1) return "Failed, try using other method or change input parameters.";
         else return String.valueOf(x);

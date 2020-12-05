@@ -179,14 +179,11 @@ public class Controller {
         if (f.checkSyntax()) {
             wrongFunctionText.setVisible(false);
             XYChart.Series points = new XYChart.Series();
-            double max=Double.MIN_VALUE;
-            double min=Double.MAX_VALUE;
             for (int i = 0; i <= (domainRight-domainLeft) / (sample * 0.1); i++) {
                 double x = domainLeft + i * sample * 0.1;
                 if (!Double.isNaN(f.calculate(x)) && f.calculate(x) != Double.POSITIVE_INFINITY && f.calculate(x) != Double.NEGATIVE_INFINITY) {
                     points.getData().add(new XYChart.Data(x, f.calculate(x)));
-                    if(max<f.calculate(x)) max=f.calculate(x);
-                    if(min>f.calculate(x)) min=f.calculate(x);
+
                 }
             }
             System.out.println((domainRight-domainLeft)/50.0);

@@ -17,7 +17,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.mariuszgromada.math.mxparser.Function;
 
-
+/**
+ * Program controlling class
+ */
 public class Controller {
 
     @FXML
@@ -87,6 +89,9 @@ public class Controller {
 
     ObservableList<String> methods = FXCollections.observableArrayList();
 
+    /**
+     * Method setting methodChoiceBox options
+     */
     private void setMethodChoiceButton() {
         String a = "Bisection";
         String b = "False position";
@@ -98,11 +103,19 @@ public class Controller {
         methodChoiceBox.setValue("Bisection");
     }
 
+    /**
+     * Method changing focus
+     * @param event Event information
+     */
     @FXML
     private void accepted(ActionEvent event){
         graph.requestFocus();
     }
 
+    /**
+     * Method counting root od function with chosen method
+     * @param event Event information
+     */
     @FXML
     void calculate(ActionEvent event) throws IllegalArgumentException {
         if (!f.getFunctionExpressionString().equals(functionTextField.getText())) plotFunction(event);
@@ -142,6 +155,10 @@ public class Controller {
 
     }
 
+    /**
+     * Method changing domain of fucntion
+     * @param event Event information
+     */
     @FXML
     void changeDomain(ActionEvent event) {
         if (domainRightText.equals(event.getSource())) {
@@ -173,6 +190,10 @@ public class Controller {
 
     }
 
+    /**
+     * Method plotting function
+     * @param event Event information
+     */
     @FXML
     void plotFunction(ActionEvent event) {
         f = new Function("f(x)=" + functionTextField.getText());
@@ -197,6 +218,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Starting method
+     */
     @FXML
     void initialize() {
         assert graph != null : "fx:id=\"graph\" was not injected: check your FXML file 'graph.fxml'.";
